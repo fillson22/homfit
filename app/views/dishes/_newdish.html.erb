@@ -1,0 +1,18 @@
+<%= form_with model: @dish do |f| %>
+  <%= f.label :name, 'Название' %>
+  <p><%= f.text_field :name %> </p>
+
+  <%= f.label :proteins, 'Белки' %>
+  <p><%= f.text_field :proteins%> </p>
+  
+  <%= f.label :fats, 'Жиры' %>
+  <p><%= f.text_field :fats%> </p>
+
+  <%= f.label :carbohydrates, 'Углеводы' %>
+  <p><%= f.text_field :carbohydrates%> </p>
+
+  <%= f.label :cal, 'Каллории' %>
+  <p><%= f.text_field :cal%> </p>
+
+  <p><%= f.submit 'Создать' %> </p>
+<% end %>
