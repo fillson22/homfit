@@ -1,0 +1,11 @@
+<p> <%= dish.name %>
+    <%= dish.proteins %>
+    <%= dish.fats %>
+    <%= dish.carbohydrates %>
+    <%= dish.cal %>
+    <%= button_to 'Изменить', dish_path(dish), method: :put %>
+    <%= button_to 'Удалить', dish_path(dish), method: :delete %>
+</p>
+
+
+

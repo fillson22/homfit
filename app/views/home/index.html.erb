@@ -3,7 +3,9 @@
     <div class="card-body">
       <h5 class="card-title">Что будем делать?</h5>
       <p> <%= link_to 'Готовить', '#', class: "btn btn-primary"%> </p>
-      <p> <%= link_to 'Новое блюдо', new_dish_path, class: "btn btn-primary"%> </p>
+      <p> <%= link_to 'Новое блюдо', new_dish_path, class: "btn btn-primary"%> 
+          <%= link_to 'Список', dishes_path, class: "btn btn-primary"%>
+      </p>
       <p> <%= link_to 'Список покупок', '#', class: "btn btn-primary"%> </p>
     </div>
   </div>
