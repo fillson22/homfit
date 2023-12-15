@@ -1,3 +1,8 @@
-<% @dishes.each do |dish| %>
-  <%= render partial: 'dish', locals: { dish: dish }%>
+<p class='text-center'> <%= link_to 'Новое блюдо', new_dish_path, class: "btn btn-primary"%> </p>
+<% if @dishes.present? %>
+  <% @dishes.each do |dish| %>
+    <%= render 'dish', dish: dish %>
+  <% end %>
+<% else %>
+  <h5 class='text-center'>  База пуста </h5>
 <% end %>

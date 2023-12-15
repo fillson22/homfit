@@ -1,10 +1,10 @@
-<p> <%= dish.name %>
+<p> <%= link_to dish.name, dish_path(dish) %>
     <%= dish.proteins %>
     <%= dish.fats %>
     <%= dish.carbohydrates %>
     <%= dish.cal %>
-    <%= button_to 'Изменить', dish_path(dish), method: :put %>
-    <%= button_to 'Удалить', dish_path(dish), method: :delete %>
+    <%= link_to 'Изменить', edit_dish_path(dish)%>
+    <%= button_to 'Удалить', dish_path(dish), method: :delete, class: 'btn btn-link' %>
 </p>
 
 
