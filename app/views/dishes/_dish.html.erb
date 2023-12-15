@@ -1,11 +1,11 @@
-<p> <%= link_to dish.name, dish_path(dish) %>
-    <%= dish.proteins %>
-    <%= dish.fats %>
-    <%= dish.carbohydrates %>
-    <%= dish.cal %>
-    <%= link_to 'Изменить', edit_dish_path(dish)%>
-    <%= button_to 'Удалить', dish_path(dish), method: :delete, class: 'btn btn-link' %>
-</p>
-
+  <tr>
+    <td> <%= link_to dish.name, dish_path(dish)%> </th>
+    <td> <%= dish.proteins %> </td>
+    <td> <%= dish.fats %> </td>
+    <td> <%= dish.carbohydrates %> </td>
+    <td> <%= dish.cal %> </td>
+    <td> <%= link_to 'Изменить', edit_dish_path(dish)%> </td>
+    <td> <%= button_to 'Удалить', dish_path(dish), method: :delete, class: 'btn btn-link' %> </td>
+  </tr>
 
 

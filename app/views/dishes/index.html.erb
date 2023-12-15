@@ -1,8 +1,25 @@
 <p class='text-center'> <%= link_to 'Новое блюдо', new_dish_path, class: "btn btn-primary"%> </p>
-<% if @dishes.present? %>
-  <% @dishes.each do |dish| %>
-    <%= render 'dish', dish: dish %>
-  <% end %>
-<% else %>
-  <h5 class='text-center'>  База пуста </h5>
-<% end %>
+<div class='d-flex align-items-center'>
+  <table class="table table-bordered text-center">
+    <thead>
+      <tr>
+        <th>Название</th>
+        <th>Белки</th>
+        <th>Жиры</th>
+        <th>Углеводы</th>
+        <th>Каллории</th>
+        <th>...</th>
+        <th>...</th>
+      </tr>
+    </thead>  
+    <tbody>
+      <% if @dishes.present? %>
+        <% @dishes.each do |dish| %>
+          <%= render 'dish', dish: dish %>
+        <% end %>
+      <% else %>
+        <h5 class='text-center'>  База пуста </h5>
+      <% end %>
+    </tbody>  
+  </table>
+</div>
