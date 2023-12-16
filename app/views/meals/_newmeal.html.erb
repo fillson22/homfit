@@ -1,0 +1,7 @@
+<%= form_with model: meal do |form| %>
+  <p> <%= form.select :dish_id, Dish.order(:name).map { |dish| [dish.name, dish.id] } %> </p> 
+  <p> <%= form.number_field :dish_weight, in: 1.0..500.0, step: 5 %> </p>
+  <p> </p>
+  <%= form.submit 'Подтвердить', class: 'btn btn-success' %>
+  <%= link_to "Отменить", :back, class: 'btn btn-secondary' %>
+<% end %>
