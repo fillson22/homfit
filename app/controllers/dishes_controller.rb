@@ -27,7 +27,7 @@ class DishesController < ApplicationController
 
   def update
     @dish.update dish_params
-    redirect_to dish_path
+    redirect_to dishes_path
   end
 
   private
