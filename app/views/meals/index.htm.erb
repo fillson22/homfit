@@ -1,8 +1,0 @@
-<% if @meals.present? %>
-        <% @meals.each do |meal| %>
-          <%= meal.dish_id %>
-          <%= meal.dish_weight %>
-        <% end %>
-<% else %>
-  <h5 class='text-center'>  База пуста </h5>
-<% end %>
