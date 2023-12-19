@@ -1,12 +1,10 @@
 <%= form_with model: meal do |form| %>
   <p> <%= form.label :status, "Тип: " %>
       <%= form.select :status, [ 'Перекус' , 'Завтрак', 'Обед', 'Ужин' ] %> </p>
-
-      <%= form.label :dish_id, "Блюдо: " %>
-  <p> <%= form.select :dish_id, Dish.order(:name).map { |dish| [dish.name, dish.id] } %> </p> 
-      <%= form.label :dish_weight, "Вес: " %>
-  <p> <%= form.number_field :dish_weight, in: 1.0..500.0%> </p>
-  <p> </p>
+  <p> <%= form.label :dish_id, "Блюдо: " %>
+      <%= form.select :dish_id, Dish.order(:name).map { |dish| [dish.name, dish.id] } %> </p> 
+  <p> <%= form.label :dish_weight, "Вес: " %>
+      <%= form.number_field :dish_weight, in: 1.0..500.0%> </p>
   <%= form.submit 'Подтвердить', class: 'btn btn-success' %>
   <%= link_to "Отменить", :back, class: 'btn btn-secondary' %>
 <% end %>

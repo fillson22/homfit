@@ -11,4 +11,17 @@ class Meal < ApplicationRecord
     return proteins, fats, carbohydrates, cal
   end
 
+  def pfcc_total_meal(pfcc)
+      proteins = 0
+    Meal.where(status: pfcc).each do |meal|
+      proteins += Dish.find(meal.dish_id).proteins 
+
+    end
+
+  end
+
+  def pfcc_total_day
+
+  end
+
 end

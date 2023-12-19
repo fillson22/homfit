@@ -9,15 +9,36 @@
         <th>Углеводы</th>
         <th>Каллории</th>
         <th>Статус</th>
+        <th>Дата</th>
         <th>...</th>
         <th>...</th>
       </tr>
     </thead>  
     <tbody>
       <% if @meals.present? %>
-        <% @meals.each do |meal| %>
+      <tr> <th> Завтрак </th> </tr>
+        <% @meals.where(status: "Завтрак").each do |meal| %>
           <%= render 'meal', meal: meal %>
         <% end %>
+      <tr> 
+        <th> Итого: </th> 
+        <th> <% Итого: </th>pfcc_total_meal(pfcc)
+      </tr>
+      <tr> <th> Обед </th> </tr>
+        <% @meals.where(status: "Обед").each do |meal| %>
+          <%= render 'meal', meal: meal %>
+        <% end %>
+      <tr> <th> Итого: </th> </tr>
+      <tr> <th> Ужин </th> </tr>
+        <% @meals.where(status: "Ужин").each do |meal| %>
+          <%= render 'meal', meal: meal %>
+        <% end %>
+      <tr> <th> Итого: </th> </tr>
+      <tr> <th> Перекус </th> </tr>
+        <% @meals.where(status: "Перекус").each do |meal| %>
+          <%= render 'meal', meal: meal %>
+        <% end %>
+      <tr> <th> Итого: </th> </tr>
       <% else %>
         <h5 class='text-center'>  Приемов пищи не было </h5>
       <% end %>
