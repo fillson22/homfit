@@ -4,6 +4,7 @@
   <% meal.meal_pfcc(meal).each do |pfcc| %>
     <td> <%= pfcc %> </td>
   <% end %>
+  <td> <%= meal.status %> </td>
   <td> <%= link_to 'Изменить', edit_meal_path(meal)%> </td>
   <td> <%= button_to 'Удалить', meal_path(meal), method: :delete, class: 'btn btn-link' %> </td>
 </tr>
