@@ -1,7 +1,7 @@
 <tr>
   <td> <%= Dish.find(meal.dish_id).name %> </th>
   <td> <%= meal.dish_weight %> </td>
-  <% meal.meal_pfcc(meal).each do |pfcc| %>
+  <% meal.pfcc_meal(meal).each do |pfcc| %>
     <td> <%= pfcc %> </td>
   <% end %>
   <td> <%= meal.status %> </td>
