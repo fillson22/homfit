@@ -1,5 +1,5 @@
 class MealsController < ApplicationController
-
+  before_action :set_meal, only: [:show, :destroy, :edit, :update]
   def new
     @meal = current_user.meals.new
   end
@@ -15,7 +15,23 @@ class MealsController < ApplicationController
     @meals = current_user.meals.all.order created_at: :desc
   end
 
+  def destroy
+    @meal.destroy
+    redirect_to meals_path
+  end
+
+  def edit; end
+
+  def update
+    @meal.update meal_params
+    redirect_to meals_path
+  end
+
   private
+
+  def set_meal
+    @meal = Meal.find(params[:id])
+  end
 
   def meal_params
     params.require(:meal).permit(:dish_id, :dish_weight, :status)
