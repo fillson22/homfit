@@ -1,12 +1,16 @@
 <div class="container d-flex justify-content-center">
   <div class="card text-center" style="width: 19rem;">
     <div class="card-body">
-      <h5 class="card-title">Что будем делать?</h5>
-      <p> <%= link_to 'Готовить', new_meal_path, class: "btn btn-primary"%> </p>
-      <p> <%= link_to 'Новое блюдо', new_dish_path, class: "btn btn-primary"%> 
-          <%= link_to 'Список блюд', dishes_path, class: "btn btn-primary"%> </p>
-      <p> <%= link_to 'Список покупок', '#', class: "btn btn-primary"%> 
-          <%= link_to 'Отчеты', meals_path, class: "btn btn-primary"%> </p>
+      <% if user_signed_in? %>
+        <h5 class="card-title">Что будем делать?</h5>
+        <p> <%= link_to 'Готовить', new_meal_path, class: "btn btn-primary"%> </p>
+        <p> <%= link_to 'Новое блюдо', new_dish_path, class: "btn btn-primary"%> 
+            <%= link_to 'Список блюд', dishes_path, class: "btn btn-primary"%> </p>
+        <p> <%= link_to 'Список покупок', '#', class: "btn btn-primary"%> 
+            <%= link_to 'Отчеты', meals_path, class: "btn btn-primary"%> </p>
+      <% else %>
+        <%= link_to 'Войти', new_user_session_path, class: "btn btn-primary"%>
+      <% end %>
     </div>
   </div>
 </div>

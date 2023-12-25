@@ -8,7 +8,7 @@ class DishesController < ApplicationController
   def create
     @dish = Dish.create dish_params
     if @dish.save
-      redirect_to dishes_path
+      redirect_to dishes_path, notice: 'Блюдо добавлено'
     end
   end
 
