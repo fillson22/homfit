@@ -1,0 +1,37 @@
+<div class='container bg-white' style="width: 400px;">
+<% if @meals.present? %>
+<span style="font-size:0.7em">
+<h5 class='text-center'> Завтрак </h5>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Название</th>
+      <th scope="col">В</th>
+      <th scope="col">Б</th>
+      <th scope="col">Ж</th>
+      <th scope="col">У</th>
+      <th scope="col">К</th>
+      <th scope="col">_</th>
+      <th scope="col">_</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <% @meals.where(status: "Завтрак").each do |meal| %>
+      <tr>
+        <td> <%= Dish.find(meal.dish_id).name %> </td>
+        <td> <%= meal.dish_weight %> </td>
+        <% meal.pfcc_meal(meal).each do |pfcc| %>
+          <td> <%= pfcc %> </td>
+        <% end %>
+        <td> <%= link_to '', edit_meal_path(meal), class: "bi bi-pencil" %> </td>
+        <td> <%= link_to '', meal_path(meal), data: { turbo_method: :delete }, class: 'bi bi-trash' %> </td>
+      </tr>
+    <% end %> </span>
+  </tbody>
+</table>
+</div>
+<% else %>
+
+    
+<% end %>

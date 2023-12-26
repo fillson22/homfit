@@ -11,13 +11,13 @@
   </head>
 
   <body class='bg-secondary-subtle'>
-   <div>
+   
     <%= render 'shared/navbar' %>
     <div class='container mt-5 text-center'>
       <p class="notice"><%= notice %></p> 
       <p class="alert"><%= alert %></p>
     </div>
-    <%= yield %>
-  </div>
+    <div class='container'> <%= yield %> </div>
+  
   </body>
 </html>

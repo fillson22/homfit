@@ -1,14 +1,18 @@
 <div class='container d-flex justify-content-center'> 
-  <div class="d-flex  flex-column justify-content-between align-items-center bg-white" style="width: 19rem;height: 19rem;">
+  <div class="card d-flex justify-content-center" style="width: 19rem;height: 19rem;">
     <% if user_signed_in? %>
-      <h5>Что будем делать?</h5>
-      <%= link_to 'Готовить', new_meal_path, class: "btn btn-primary"%>
-      <%= link_to 'Новое блюдо', new_dish_path, class: "btn btn-primary"%> 
-      <%= link_to 'Список блюд', dishes_path, class: "btn btn-primary"%>
-      <%= link_to 'Список покупок', '#', class: "btn btn-primary"%> 
-      <%= link_to 'Отчеты', meals_path, class: "btn btn-primary"%>
+      <div class="d-flex flex-column align-items-center">
+        <div> <h5>Что будем делать?</h5> </div>
+        <div> <%= link_to 'Готовить', new_meal_path, class: "btn btn-primary"%> </div>
+        <div class='p-2'> <%= link_to 'Новое блюдо', new_dish_path, class: "btn btn-primary"%> 
+        <%= link_to 'Список блюд', dishes_path, class: "btn btn-primary"%> </div>
+        <div> <%= link_to 'Список покупок', '#', class: "btn btn-primary"%> </div>
+        <div class='p-2'> <%= link_to 'Отчеты', meals_path, class: "btn btn-primary"%> </div>
+      </div>    
     <% else %>
-      <%= link_to 'Войти', new_user_session_path, class: "btn btn-primary rounded-circle p-5"%>
+      <div class='d-flex justify-content-center align-items-center'>
+        <%= link_to 'Войти', new_user_session_path, class: "btn btn-primary rounded-circle p-5"%>
+      </div>
     <% end %>
   </div>
 </div>
