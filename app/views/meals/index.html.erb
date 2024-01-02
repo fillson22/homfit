@@ -1,4 +1,8 @@
-  <%= render 'breakfastmeal' %>
+<div class="d-inline-flex flex-wrap">
+  <% Meal.statuses.keys.each do |status| %>
+    <%= render 'breakfastmeal', status: status %>
+  <% end %>
+</div>
 
 <div class='d-flex align-items-center'>
 <% if @meals.present? %>

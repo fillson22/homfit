@@ -1,7 +1,7 @@
 class Meal < ApplicationRecord
   belongs_to :user
   belongs_to :dish
-  enum status: { 'Перекус': 0, 'Завтрак': 1, 'Обед': 2, 'Ужин': 3 }
+  enum status: [ :'Перекус', :'Завтрак', :'Обед', :'Ужин' ]
 
   def pfcc_meal(meal)
     proteins = (Dish.find(meal.dish_id).proteins/100*meal.dish_weight).round(2)
