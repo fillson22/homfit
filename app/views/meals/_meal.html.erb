@@ -7,5 +7,5 @@
   <td> <%= meal.status %> </td>
   <td> <%= meal.created_at %> </td>
   <td> <%= link_to 'Изменить', edit_meal_path(meal)%> </td>
-  <td> <%= button_to 'Удалить', meal_path(meal), method: :delete, class: 'btn btn-link' %> </td>
+  <td> <%= link_to 'Удалить', meal_path(meal), data: { turbo_method: :delete }%> </td>
 </tr>

@@ -2,7 +2,8 @@
   <div class='d-flex bg-white' style="width: 400px;">
     <% if @meals.present? %>
       <span style="font-size:0.7em">
-        <h5 class='text-center'> <%= status %> </h5>
+        <h5 class='text-center'> <%= status %> 
+        <%= link_to '', new_meal_path, class: 'bi bi-patch-plus' %> </h5>
         <table class="table">
           <thead class="thead-dark">
             <tr>
@@ -17,7 +18,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @meals.where(status: status).each do |meal| %>
+            <% @meals.where(status: status, created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).each do |meal| %>
               <tr>
                 <td> <%= Dish.find(meal.dish_id).name %> </td>
                 <td> <%= meal.dish_weight %> </td>
@@ -30,7 +31,7 @@
             <% end %>
               <tr> 
                 <th> Итого: </th> 
-                <% current_user.meals.pfcc_meal_total(status: status).each do |pfcc| %>
+                <% current_user.meals.pfcc_meal_total(status: status, created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).each do |pfcc| %>
                   <th> <%= pfcc %> </th>
                 <% end %>
               </tr>

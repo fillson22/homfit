@@ -3,6 +3,8 @@ class Meal < ApplicationRecord
   belongs_to :dish
   enum status: [ :'Перекус', :'Завтрак', :'Обед', :'Ужин' ]
 
+  validates :dish_weight, presence: true, numericality: true
+
   def pfcc_meal(meal)
     proteins = (Dish.find(meal.dish_id).proteins/100*meal.dish_weight).round(2)
     fats = (Dish.find(meal.dish_id).fats/100*meal.dish_weight).round(2)

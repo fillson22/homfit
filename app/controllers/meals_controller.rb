@@ -7,7 +7,7 @@ class MealsController < ApplicationController
   def create
     @meal = current_user.meals.create meal_params
     if @meal.save
-      redirect_to new_meal_path
+      redirect_to meals_path
     end
   end
 
