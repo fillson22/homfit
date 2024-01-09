@@ -4,8 +4,8 @@
     <td> <%= dish.fats %> </td>
     <td> <%= dish.carbohydrates %> </td>
     <td> <%= dish.cal %> </td>
-    <td> <%= link_to 'Изменить', edit_dish_path(dish)%> </td>
-    <td> <%= link_to 'Удалить', dish_path(dish), data: { turbo_method: :delete } %> </td>
+    <td> <%= button_to '', edit_dish_path(dish), method: :get, class: "bi bi-pencil" %> </td>
+    <td> <%= button_to '', dish_path(dish), method: :delete, class: 'bi bi-trash' %> </td>
   </tr>
 
 

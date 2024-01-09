@@ -1,11 +1,41 @@
-<tr>
-  <td> <%= Dish.find(meal.dish_id).name %> </th>
-  <td> <%= meal.dish_weight %> </td>
-  <% meal.pfcc_meal(meal).each do |pfcc| %>
-    <td> <%= pfcc %> </td>
-  <% end %>
-  <td> <%= meal.status %> </td>
-  <td> <%= meal.created_at %> </td>
-  <td> <%= link_to 'Изменить', edit_meal_path(meal)%> </td>
-  <td> <%= link_to 'Удалить', meal_path(meal), data: { turbo_method: :delete }%> </td>
-</tr>
+<div class='d-flex p-2'>
+  <div class='d-flex bg-white' style="width: 400px;">
+    <span style="font-size:0.7em">
+      <h5 class='text-center'> <%= status %> 
+      <%= link_to '', new_meal_path, class: 'bi bi-patch-plus' %> </h5>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Название</th>
+            <th scope="col">В</th>
+            <th scope="col">Б</th>
+            <th scope="col">Ж</th>
+            <th scope="col">У</th>
+            <th scope="col">К</th>
+            <th scope="col">_</th>
+            <th scope="col">_</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @meals.where(status: status, created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).each do |meal| %>
+            <tr>
+              <td> <%= Dish.find(meal.dish_id).name %> </td>
+              <td> <%= meal.dish_weight %> </td>
+              <% meal.pfcc_meal(meal).each do |pfcc| %>
+                <td> <%= pfcc %> </td>
+              <% end %>
+              <td> <%= button_to '', edit_meal_path(meal), method: :get, class: "bi bi-pencil" %> </td>
+              <td> <%= button_to '', meal_path(meal), method: :delete, class: 'bi bi-trash' %> </td>
+            </tr>
+          <% end %>
+            <tr> 
+              <th> Итого: </th> 
+              <% current_user.meals.pfcc_meal_total(status: status, created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).each do |pfcc| %>
+                <th> <%= pfcc %> </th>
+              <% end %>
+            </tr>
+        </tbody>
+      </table>
+    </span>
+  </div>
+</div>
