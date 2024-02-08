@@ -1,5 +1,6 @@
 class MealsController < ApplicationController
-  before_action :set_meal, only: [:show, :destroy, :edit, :update]
+  before_action :set_meal, only: [:destroy, :edit, :update]
+
   def new
     @meal = current_user.meals.new
   end
@@ -25,6 +26,10 @@ class MealsController < ApplicationController
   def update
     @meal.update meal_params
     redirect_to meals_path
+  end
+
+  def report
+    @meals = current_user.meals.all.order created_at: :desc
   end
 
   private
