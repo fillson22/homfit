@@ -75,3 +75,5 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+# Ransack will help you easily add searching to your Rails application, without any additional dependencies.
+gem "ransack", "~> 4.1.1"

@@ -5,6 +5,14 @@ class Meal < ApplicationRecord
 
   validates :dish_weight, presence: true, numericality: true
 
+  def self.ransackable_associations(auth_object = nil)
+    ["dish", "user"]
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "dish_id", "dish_weight", "id", "status", "updated_at", "user_id"]
+  end
+
   def pfcc_meal(meal)
     proteins = (Dish.find(meal.dish_id).proteins/100*meal.dish_weight).round(2)
     fats = (Dish.find(meal.dish_id).fats/100*meal.dish_weight).round(2)

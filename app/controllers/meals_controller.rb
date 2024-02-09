@@ -29,7 +29,8 @@ class MealsController < ApplicationController
   end
 
   def report
-    @meals = current_user.meals.all.order created_at: :desc
+    @q = current_user.meals.ransack(params[:q])
+    @meals = @q.result(distinct: true)
   end
 
   private

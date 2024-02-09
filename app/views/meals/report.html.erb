@@ -1,21 +1,27 @@
 <div class='d-flex p-2'>
-  <%= form_with model: @meal do |form| %>
-    <%= form.date :created_at %>
-    <% Meal.select(:created_at).each do |meal| %>
-      <%= meal %>
-    <% end %>
+  
+  <%= search_form_for @q, url: report_meals_url do |f| %>
+    <%= f.label :name_cont %>
+    <%= f.search_field :name_cont %>
+    <%= f.label :dish_weight %>
+    <%= f.search_field :dish_weight_eq %>
+    <%= f.label :date_eq %>
+    <%= f.date_field :created_at_eq %>
+    <%= f.submit %>
   <% end %>
+
   <div class='d-flex bg-white' style="width: 400px;">
     <span style="font-size:0.7em">
       <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">Название</th>
-            <th scope="col">В</th>
+            <th scope="col"><%= sort_link(@q, :name, 'Название') %></th>
+            <th scope="col"><%= sort_link(@q, :dish_weight, 'Вес') %></th>
             <th scope="col">Б</th>
             <th scope="col">Ж</th>
             <th scope="col">У</th>
             <th scope="col">К</th>
+            <th scope="col"><%= sort_link(@q, :created_at, 'Дата') %></th>
           </tr>
         </thead>
         <tbody>
@@ -26,6 +32,7 @@
               <% meal.pfcc_meal(meal).each do |pfcc| %>
                 <td> <%= pfcc %> </td>
               <% end %>
+              <td> <%= meal.created_at %> </td>
             </tr>
           <% end %>
             <tr> 
