@@ -13,7 +13,7 @@ class DishesController < ApplicationController
   end
 
   def index
-    @dishes = Dish.all.order created_at: :desc
+    @pagy, @dishes = pagy(Dish.all.order(created_at: :desc), items: 5)
   end
 
   def show; end
