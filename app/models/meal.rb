@@ -13,6 +13,10 @@ class Meal < ApplicationRecord
     ["created_at", "dish_id", "dish_weight", "id", "status", "updated_at", "user_id"]
   end
 
+  def name_meal
+    Dish.find(dish_id).name
+  end
+
   def pfcc_meal(meal)
     proteins = (Dish.find(meal.dish_id).proteins/100*meal.dish_weight).round(2)
     fats = (Dish.find(meal.dish_id).fats/100*meal.dish_weight).round(2)

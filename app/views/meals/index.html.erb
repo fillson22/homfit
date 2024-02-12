@@ -12,7 +12,7 @@
     </thead>  
     <tbody>
       <tr> <th> Сегодня: </th> 
-        <% current_user.meals.pfcc_total_day.each do |pfcc| %>
+        <% current_user.meals.pfcc_meal_total(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).each do |pfcc| %>
           <th> <%= pfcc %> </th>
         <% end %>
       </tr>

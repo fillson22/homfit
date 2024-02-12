@@ -30,7 +30,7 @@ class MealsController < ApplicationController
 
   def report
     @q = current_user.meals.ransack(params[:q])
-    @meals = @q.result(distinct: true)
+    @meals = @q.result.includes(:dish)
   end
 
   private
