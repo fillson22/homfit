@@ -31,6 +31,7 @@ class MealsController < ApplicationController
   def report
     @q = current_user.meals.ransack(params[:q])
     @pagy, @meals = pagy(@q.result.includes(:dish), items: 5)
+    @meals_dubl = @q.result.includes(:dish)
   end
 
   private

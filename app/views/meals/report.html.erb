@@ -11,7 +11,7 @@
     <% end %>
   </div>
   <hr>
-  <%== pagy_bootstrap_nav(@pagy) %>
+  <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
   <div class='d-flex bg-white' style="width: 600px;">
     <span style="font-size:0.7em">
       <table class="table">
@@ -29,17 +29,17 @@
         <tbody>
           <% @meals.each do |meal| %>
             <tr>
-              <td> <%= meal.name_meal %> </td>
+              <td> <%= meal.dish.name %> </td>
               <td> <%= meal.dish_weight %> </td>
               <% meal.pfcc_meal(meal).each do |pfcc| %>
                 <td> <%= pfcc %> </td>
               <% end %>
-              <td> <%= meal.created_at %> </td>
+              <td> <%= meal.acreated_at %> </td>
             </tr>
           <% end %>
             <tr> 
               <th> Итого: </th> 
-              <% @meals.pfcc_meal_total(created_at: Time.zone.now.beginning_of_year..Time.zone.now.end_of_year).each do |pfcc| %>
+              <% @meals_dubl.pfcc_meal_total(created_at: Time.zone.now.beginning_of_year..Time.zone.now.end_of_year).each do |pfcc| %>
                 <th> <%= pfcc %> </th>
               <% end %>
             </tr>

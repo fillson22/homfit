@@ -1,6 +1,6 @@
 <p class='text-center'> <%= link_to 'Новое блюдо', new_dish_path, class: "btn btn-primary"%> </p>
 <hr>
-  <%== pagy_bootstrap_nav(@pagy) %>
+  <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
 <div class='d-flex align-items-center'>
   <table class="table table-bordered text-center">
     <thead>
