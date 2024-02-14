@@ -1,50 +1,51 @@
-<div class='d-flex flex-column p-2'>
+<div class='d-flex flex-row p-2'>
   <div class='d-flex'>
     <%= search_form_for @q, url: report_meals_url do |f| %>
-      <%= f.label :dish_name %>
-      <%= f.search_field :dish_name_cont %>
-      <%= f.label :dish_weight %>
-      <%= f.search_field :dish_weight_eq %>
-      <%= f.label :date %>
-      <%= f.date_field :created_at_eq %>
-      <%= f.submit %>
+      <%= f.label :'Название блюда' %>
+      <p> <%= f.search_field :dish_name_cont %> </p>
+      <%= f.label :'Дата' %>
+      <p> <%= f.date_field :created_at_eq %> </p>
+      <%= f.submit 'Поиск', class: 'btn btn-primary' %>
     <% end %>
   </div>
-  <hr>
-  <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
-  <div class='d-flex bg-white' style="width: 600px;">
-    <span style="font-size:0.7em">
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col"><%= sort_link(@q, :dish_name, 'Название') %></th>
-            <th scope="col"><%= sort_link(@q, :dish_weight, 'Вес') %></th>
-            <th scope="col">Б</th>
-            <th scope="col">Ж</th>
-            <th scope="col">У</th>
-            <th scope="col">К</th>
-            <th scope="col"><%= sort_link(@q, :created_at, 'Дата') %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @meals.each do |meal| %>
+  <div class='d-flex flex-column' style="width: 600px;">
+    <div class= 'd-flex bg-white'>
+      <span style="font-size:0.7em">
+        <table class="table">
+          <thead class="thead-dark">
             <tr>
-              <td> <%= meal.dish.name %> </td>
-              <td> <%= meal.dish_weight %> </td>
-              <% meal.pfcc_meal(meal).each do |pfcc| %>
-                <td> <%= pfcc %> </td>
-              <% end %>
-              <td> <%= meal.acreated_at %> </td>
+              <th scope="col"><%= sort_link(@q, :dish_name, 'Название') %></th>
+              <th scope="col"><%= sort_link(@q, :dish_weight, 'Вес') %></th>
+              <th scope="col">Б</th>
+              <th scope="col">Ж</th>
+              <th scope="col">У</th>
+              <th scope="col">К</th>
+              <th scope="col"> <%= sort_link(@q, :created_at, 'Дата') %></th>
             </tr>
-          <% end %>
-            <tr> 
-              <th> Итого: </th> 
-              <% @meals_dubl.pfcc_meal_total(created_at: Time.zone.now.beginning_of_year..Time.zone.now.end_of_year).each do |pfcc| %>
-                <th> <%= pfcc %> </th>
-              <% end %>
-            </tr>
-        </tbody>
-      </table>
-    </span>
+          </thead>
+          <tbody>
+            <% @meals.each do |meal| %>
+              <tr>
+                <td> <%= meal.dish.name %> </td>
+                <td> <%= meal.dish_weight %> </td>
+                <% meal.pfcc_meal(meal).each do |pfcc| %>
+                  <td> <%= pfcc %> </td>
+                <% end %>
+                <td> <%= meal.created_at %> </td>
+              </tr>
+            <% end %>
+              <tr> 
+                <th> Итого: </th> 
+                <% @meals_dubl.pfcc_meal_total(created_at: Time.zone.now.beginning_of_year..Time.zone.now.end_of_year).each do |pfcc| %>
+                  <th> <%= pfcc %> </th>
+                <% end %>
+              </tr>
+          </tbody>
+        </table>
+      </span>
+    </div>
+    <div class= 'd-flex'>
+      <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+    </div>
   </div>
 </div>

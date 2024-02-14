@@ -1,23 +1,13 @@
 class Meal < ApplicationRecord
+include RansackOptions
+
   belongs_to :user
   belongs_to :dish
   enum status: [ :'Перекус', :'Завтрак', :'Обед', :'Ужин' ]
 
   validates :dish_weight, presence: true, numericality: true
 
-  def self.ransackable_associations(auth_object = nil)
-    ["dish", "user"]
-  end
-
-  def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "dish_id", "dish_weight", "id", "status", "updated_at", "user_id"]
-  end
-
-  def acreated_at
-    created_at.strftime("%D")
-  end
-
-  def pfcc_meal(meal)
+  def pfcc_meal(meal) # Считает бжу за один приём пищи
     proteins = (meal.dish.proteins/100*meal.dish_weight).round(2)
     fats = (meal.dish.fats/100*meal.dish_weight).round(2)
     carbohydrates = (meal.dish.carbohydrates/100*meal.dish_weight).round(2)
@@ -25,7 +15,7 @@ class Meal < ApplicationRecord
     return proteins, fats, carbohydrates, cal
   end
 
-  def self.pfcc_meal_total(some_date)
+  def self.pfcc_meal_total(some_date) # Считает бжу за все приёмы пищи за конкретный период
     weight, proteins, fats, carbohydrates, cal = 0, 0, 0, 0, 0
     Meal.where(some_date).each do |meal|
       weight += meal.dish_weight
