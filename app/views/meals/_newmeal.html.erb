@@ -1,6 +1,6 @@
 <%= form_with model: meal do |form| %>
   <p> <%= form.label :status, "Тип: " %>
-      <%= form.select :status, [ 'Перекус' , 'Завтрак', 'Обед', 'Ужин' ] %> </p>
+      <%= form.select :meal_status %> </p>
   <p> <%= form.label :dish_id, "Блюдо: " %>
       <%= form.select :dish_id, Dish.order(:name).map { |dish| [dish.name, dish.id] } %> </p> 
   <p> <%= form.label :dish_weight, "Вес: "%>
