@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: homfit_development
+
+test:
+  <<: *default
+  database: homfit_test
+вава
+production:
+  <<: *default
+  database: homfit_production
+  username: homfit
+  password: <%= ENV["HOMFIT_DATABASE_PASSWORD"] %>
