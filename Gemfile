@@ -17,6 +17,7 @@ gem "ransack", "~> 4.1.1"
 gem 'pagy', '~> 6.4'
 gem 'figaro'
 gem "puma", "~> 5.0"
+gem 'bcrypt_pbkdf', '~> 1.1'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
