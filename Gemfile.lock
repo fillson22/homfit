@@ -89,6 +89,8 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    capistrano-upload-config (0.9.0)
+      capistrano (>= 3.0)
     capistrano3-puma (5.2.0)
       capistrano (~> 3.7)
       capistrano-bundler
@@ -274,6 +276,7 @@ DEPENDENCIES
   capistrano-bundler
   capistrano-rails
   capistrano-rvm
+  capistrano-upload-config
   capistrano3-puma
   capybara
   cssbundling-rails

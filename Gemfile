@@ -20,7 +20,6 @@ gem "puma", "~> 5.0"
 gem 'bcrypt_pbkdf', '~> 1.1'
 gem 'net-ssh', '>= 6.0.2'
 gem 'ed25519', '>= 1.2', '< 2.0'
-gem 'sshkit-sudo'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -30,9 +29,11 @@ group :development do
   gem "web-console"
   gem 'capistrano'
   gem 'capistrano3-puma'
-  gem 'capistrano-rails', require: false
+  gem 'capistrano-rails'
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rvm'
+  gem 'sshkit-sudo'
+  gem 'capistrano-upload-config'
 end
 
 group :test do
