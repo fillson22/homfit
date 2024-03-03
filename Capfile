@@ -6,12 +6,10 @@ require "capistrano/rvm"
 require "capistrano/bundler"
 require "capistrano/rails/assets"
 require "capistrano/rails/migrations"
-require 'sshkit/sudo'
-require 'capistrano/upload-config'
+
 require "capistrano/puma"
 install_plugin Capistrano::Puma
-install_plugin Capistrano::Puma::Nginx
-install_plugin Capistrano::Puma::Systemd
-
+#install_plugin Capistrano::Puma::Systemd
+require 'sshkit/sudo'
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
