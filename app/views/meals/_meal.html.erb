@@ -1,8 +1,8 @@
 <div class='d-flex p-2'>
   <div class='d-flex bg-white' style="width: 400px;">
     <span style="font-size:0.7em">
-      <h5 class='text-center'> <%= link_to status, new_meal_path %> 
-      <%= link_to '', new_meal_path, class: 'bi bi-patch-plus' %> </h5>
+      <h5 class='text-center'> <%= link_to status, new_meal_path, class: 'btn' %> 
+      <%= link_to '+', new_meal_path, class: 'btn btn-info rounded-circle btn-sm' %> </h5>
       <table class="table">
         <thead class="thead-dark">
           <tr>
@@ -24,8 +24,8 @@
               <% meal.pfcc_meal(meal).each do |pfcc| %>
                 <td> <%= pfcc %> </td>
               <% end %>
-              <td> <%= button_to '', edit_meal_path(meal), method: :get, class: "bi bi-pencil" %> </td>
-              <td> <%= button_to '', meal_path(meal), method: :delete, class: 'bi bi-trash' %> </td>
+              <td> <%= button_to 'Исправить', edit_meal_path(meal), method: :get %> </td>
+              <td> <%= button_to 'Удалить', meal_path(meal), method: :delete %> </td>
             </tr>
           <% end %>
             <tr> 
