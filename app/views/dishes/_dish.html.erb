@@ -1,9 +1,9 @@
   <tr>
-    <td> <%= link_to dish.name, dish_path(dish)%> </td>
+    <td> <%= link_to dish.name, dish_path(dish) %> </td>
     <td> <%= dish.proteins %> </td>
     <td> <%= dish.fats %> </td>
     <td> <%= dish.carbohydrates %> </td>
     <td> <%= dish.cal %> </td>
-    <td> <%= button_to '', edit_dish_path(dish), method: :get, class: "bi bi-pencil" %> </td>
-    <td> <%= button_to '', dish_path(dish), method: :delete, class: 'bi bi-trash' %> </td>
+    <td> <%= button_to 'Исправить', edit_dish_path(dish), method: :get %> </td>
+    <td> <%= button_to 'Удалить', dish_path(dish), method: :delete %> </td>
   </tr>

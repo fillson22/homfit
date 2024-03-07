@@ -1,7 +1,7 @@
 <div class='d-flex p-2'>
-  <div class='d-flex bg-white' style="width: 400px;">
+  <div class='d-flex bg-white'>
     <span style="font-size:0.7em">
-      <h5 class='text-center'> <%= link_to status, new_meal_path, class: 'btn' %> 
+      <h5 class='text-center'> <%= link_to status, new_meal_path %> 
       <%= link_to '+', new_meal_path, class: 'btn btn-info rounded-circle btn-sm' %> </h5>
       <table class="table">
         <thead class="thead-dark">
@@ -19,7 +19,7 @@
         <tbody>
           <% @meals.where(status: status, created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).each do |meal| %>
             <tr>
-              <td> <%= Dish.find(meal.dish_id).name %> </td>
+              <td> <%= link_to meal.dish.name, dish_path(meal.dish) %> </td>
               <td> <%= meal.dish_weight %> </td>
               <% meal.pfcc_meal(meal).each do |pfcc| %>
                 <td> <%= pfcc %> </td>

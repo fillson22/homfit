@@ -13,7 +13,8 @@ class DishesController < ApplicationController
   end
 
   def index
-    @pagy, @dishes = pagy(Dish.all.order(created_at: :desc), items: 5)
+    @q_dish = Dish.ransack(params[:q])
+    @pagy, @dishes = pagy(@q_dish.result(distinct: true), items: 5)
   end
 
   def show; end
