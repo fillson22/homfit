@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_16_091820) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_07_142557) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,31 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_16_091820) do
     t.index ["user_id"], name: "index_meals_on_user_id"
   end
 
+  create_table "normpfcs", force: :cascade do |t|
+    t.float "genus"
+    t.float "age"
+    t.float "height"
+    t.float "weight"
+    t.float "kof_activ"
+    t.float "rezult"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_normpfcs_on_user_id"
+  end
+
+  create_table "person_characteristics", force: :cascade do |t|
+    t.integer "genus"
+    t.integer "age"
+    t.integer "height"
+    t.integer "weight"
+    t.float "kof_activ"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_person_characteristics_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -49,4 +74,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_16_091820) do
 
   add_foreign_key "meals", "dishes"
   add_foreign_key "meals", "users"
+  add_foreign_key "normpfcs", "users"
+  add_foreign_key "person_characteristics", "users"
 end

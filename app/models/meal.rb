@@ -16,15 +16,14 @@ include RansackOptions
   end
 
   def self.pfcc_meal_total(some_date) # Считает бжу за все приёмы пищи за конкретный период
-    weight, proteins, fats, carbohydrates, cal = 0, 0, 0, 0, 0
+    proteins, fats, carbohydrates, cal = 0, 0, 0, 0, 0
     Meal.where(some_date).each do |meal|
-      weight += meal.dish_weight
       proteins += meal.dish.proteins/100*meal.dish_weight
       fats += (meal.dish.fats/100*meal.dish_weight)
       carbohydrates += meal.dish.carbohydrates/100*meal.dish_weight
       cal += meal.dish.cal/100*meal.dish_weight
     end
-    return weight.round(2), proteins.round(2), fats.round(2), carbohydrates.round(2), cal.round(2)
+    return proteins.round(2), fats.round(2), carbohydrates.round(2), cal.round(2)
   end
 
 end

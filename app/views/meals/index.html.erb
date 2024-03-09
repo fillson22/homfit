@@ -3,7 +3,6 @@
     <thead>
       <tr>
         <th></th>
-        <th>Вес</th>
         <th>Белки</th>
         <th>Жиры</th>
         <th>Углеводы</th>
@@ -11,7 +10,11 @@
       </tr>
     </thead>  
     <tbody>
-      <tr> <th> Сегодня: </th> 
+      <tr> 
+        <th> Норма </th> 
+
+      </tr>
+      <tr> <th> Сегодня </th> 
         <% current_user.meals.pfcc_meal_total(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).each do |pfcc| %>
           <th> <%= pfcc %> </th>
         <% end %>

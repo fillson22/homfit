@@ -1,0 +1,15 @@
+<%= form_with model: @person_characteristic do |form| %>
+  <p> <%= form.check_box :genus %>
+  <%= form.label :man, "Мужчина" %>
+  <%= form.check_box :genus %>
+  <%= form.label :woman, "Женщина" %> </p>
+  <%= form.label :age, "Возраст" %>
+  <p> <%= form.number_field :age %> </p>
+  <%= form.label :height, "Рост" %>
+  <p> <%= form.number_field :height %> </p>
+  <%= form.label :weight, "Вес" %>
+  <p> <%= form.number_field :weight %> </p>
+  <%= form.label :kof_activ, "Коефициент активности" %>
+  <p> <%= form.number_field :kof_activ %> </p>
+  <p> <%= form.submit 'Расчитать' %>
+<% end %>
