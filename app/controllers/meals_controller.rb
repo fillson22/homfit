@@ -14,6 +14,7 @@ class MealsController < ApplicationController
 
   def index
     @meals = current_user.meals.all.order created_at: :desc
+    @person_characteristic = current_user.person_characteristics.first
   end
 
   def destroy

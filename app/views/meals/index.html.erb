@@ -1,6 +1,22 @@
 <div class='d-flex'>
   <table class="table table-bordered text-center">
     <thead>
+      <tr> 
+        <th> Характеристики </th> 
+        <th> Возраст </th>
+        <th> Рост(см) </th>
+        <th> Вес(кг) </th>
+        <th> Коефициент активности(1,2,3) </th>
+      </tr>
+      <tr> 
+        <td> <%= link_to 'Изментить', edit_person_characteristic_path(@person_characteristic)%></td> 
+        <% if current_user.person_characteristics.present? %>
+          <td> <%= @person_characteristic.age %> </td>
+          <td> <%= @person_characteristic.height %></td>
+          <td> <%= @person_characteristic.weight %></td>
+          <td> <%= @person_characteristic.kof_activ %></td>
+        <% end %>
+      </tr>
       <tr>
         <th></th>
         <th>Белки</th>
@@ -12,11 +28,16 @@
     <tbody>
       <tr> 
         <th> Норма </th> 
-
+        <% if current_user.person_characteristics.present? %>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+          <td> <%= @person_characteristic.norm_kkal %> </td>
+        <% end %>
       </tr>
       <tr> <th> Сегодня </th> 
         <% current_user.meals.pfcc_meal_total(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).each do |pfcc| %>
-          <th> <%= pfcc %> </th>
+          <td> <%= pfcc %> </td>
         <% end %>
       </tr>
     </tbody>  
