@@ -26,4 +26,9 @@ include RansackOptions
     return proteins.round(2), fats.round(2), carbohydrates.round(2), cal.round(2)
   end
 
+  def self.rezult_color(person_characteristic, pfcc_meal_total_day)
+    rezult = person_characteristic <=> pfcc_meal_total_day
+    rezult == 1 ? (return 'danger') : (return 'success')
+  end
+
 end

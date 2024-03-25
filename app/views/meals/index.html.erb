@@ -1,23 +1,23 @@
 <div class='d-flex'>
   <table class="table table-bordered text-center">
     <thead>
-      <tr> 
-        <th> Характеристики </th> 
-        <th> Возраст </th>
-        <th> Рост(см) </th>
-        <th> Вес(кг) </th>
-        <th> Коефициент активности(1,2,3) </th>
-      </tr>
-      <tr> 
-        <td> <%= link_to 'Изментить', edit_person_characteristic_path(@person_characteristic)%></td> 
-        <% if current_user.person_characteristics.present? %>
+      <% if current_user.person_characteristics.present? %>
+        <tr class="table-dark"> 
+          <th> Характеристики </th> 
+          <th> Возраст </th>
+          <th> Рост(см) </th>
+          <th> Вес(кг) </th>
+          <th> Коефициент активности </th>
+        </tr>
+        <tr> 
+          <td> <%= link_to 'Изментить', edit_person_characteristic_path(@person_characteristic)%></td>
           <td> <%= @person_characteristic.age %> </td>
           <td> <%= @person_characteristic.height %></td>
           <td> <%= @person_characteristic.weight %></td>
           <td> <%= @person_characteristic.kof_activ %></td>
-        <% end %>
-      </tr>
-      <tr>
+        </tr>
+      <% end %>
+      <tr class="table-dark">
         <th></th>
         <th>Белки</th>
         <th>Жиры</th>
@@ -26,16 +26,16 @@
       </tr>
     </thead>  
     <tbody>
-      <tr> 
-        <th> Норма </th> 
-        <% if current_user.person_characteristics.present? %>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> <%= @person_characteristic.norm_kkal %> </td>
-        <% end %>
-      </tr>
-      <tr> <th> Сегодня </th> 
+      <% if current_user.person_characteristics.present? %>
+        <tr> 
+          <th> Норма </th> 
+            <% @person_characteristic.norm_pfc.each do |pfc| %>
+              <td> <%= pfc %> </td>
+            <% end %>
+        </tr>
+      <% end %>
+      <tr class="table-<%= Meal.rezult_color(@person_characteristic.norm_pfc, current_user.meals.pfcc_meal_total(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)) if current_user.person_characteristics.present? %>"> 
+        <th> Сегодня </th> 
         <% current_user.meals.pfcc_meal_total(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).each do |pfcc| %>
           <td> <%= pfcc %> </td>
         <% end %>
