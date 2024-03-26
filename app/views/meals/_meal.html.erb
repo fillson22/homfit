@@ -1,8 +1,7 @@
 <div class='d-flex p-2'>
   <div class='d-flex bg-white'>
     <span style="font-size:0.7em">
-      <h5 class='text-center'> <%= link_to status, new_meal_path %> 
-      <%= link_to '+', new_meal_path, class: 'btn btn-info rounded-circle btn-sm' %> </h5>
+      <h5 class='text-center'> <%= status %> </h5>
       <table class="table">
         <thead>
           <tr class="table-dark">
@@ -24,10 +23,13 @@
               <% meal.pfcc_meal(meal).each do |pfcc| %>
                 <td> <%= pfcc %> </td>
               <% end %>
-              <td> <%= button_to 'Исправить', edit_meal_path(meal), method: :get %> </td>
-              <td> <%= button_to 'Удалить', meal_path(meal), method: :delete %> </td>
+              <td> <%= button_to fa_icon('pencil'), edit_meal_path(meal), method: :get %> </td>
+              <td> <%= button_to fa_icon('trash-o'), meal_path(meal), method: :delete %> </td>
             </tr>
           <% end %>
+            <tr> 
+              <td class='text-center' colspan="8"> <%= link_to fa_icon('plus'), new_meal_path, class: 'btn btn-outline-success btn-sm', title: 'Add meal' %> </td>
+            </tr>
             <tr> 
               <th> Итого: </th> 
               <% current_user.meals.pfcc_meal_total(status: status, created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).each do |pfcc| %>

@@ -4,6 +4,6 @@
     <td> <%= dish.fats %> </td>
     <td> <%= dish.carbohydrates %> </td>
     <td> <%= dish.cal %> </td>
-    <td> <%= button_to 'Исправить', edit_dish_path(dish), method: :get %> </td>
-    <td> <%= button_to 'Удалить', dish_path(dish), method: :delete %> </td>
+    <td> <%= button_to fa_icon('pencil'), edit_dish_path(dish), method: :get %> </td>
+    <td> <%= button_to fa_icon('trash-o'), dish_path(dish), method: :delete %> </td>
   </tr>
