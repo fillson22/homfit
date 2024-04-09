@@ -20,9 +20,7 @@ gem 'bcrypt_pbkdf', '~> 1.1'
 gem 'net-ssh', '>= 6.0.2'
 gem 'ed25519', '>= 1.2', '< 2.0'
 gem 'puma', '~> 3.10.0'
-gem 'bootstrap', '~> 5.3.2'
 gem 'sassc-rails', '~> 2.1.2'
-gem "font-awesome-rails", '~> 4.7.0'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

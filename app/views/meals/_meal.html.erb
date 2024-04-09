@@ -23,12 +23,12 @@
               <% meal.pfcc_meal(meal).each do |pfcc| %>
                 <td> <%= pfcc %> </td>
               <% end %>
-              <td> <%= button_to fa_icon('pencil'), edit_meal_path(meal), method: :get %> </td>
-              <td> <%= button_to fa_icon('trash-o'), meal_path(meal), method: :delete %> </td>
+              <td> <%= link_to '', edit_meal_path(meal), class: 'bi-pencil-square', method: :get %> </td>
+              <td> <%= button_to '', meal_path(meal), class: 'btn btn-link btn-sm bi-trash', method: :delete %> </td>
             </tr>
           <% end %>
             <tr> 
-              <td class='text-center' colspan="8"> <%= link_to fa_icon('plus'), new_meal_path, class: 'btn btn-outline-success btn-sm', title: 'Add meal' %> </td>
+              <td class='text-center' colspan="8"> <%= link_to '', new_meal_path, class: 'bi-plus-square-fill', title: 'Add meal' %> </td>
             </tr>
             <tr> 
               <th> Итого: </th> 
