@@ -1,5 +1,5 @@
 <div class='d-flex flex-row p-2'>
-  <div class='d-flex'>
+  <div class='d-flex p-2'>
     <%= search_form_for @q, url: report_meals_url do |f| %>
       <%= f.label :'Название блюда' %>
       <p> <%= f.search_field :dish_name_cont %> </p>
@@ -8,10 +8,10 @@
       <%= f.submit 'Поиск', class: 'btn btn-primary' %>
     <% end %>
   </div>
-  <div class='d-flex flex-column' style="width: 600px;">
+  <div class='card d-flex flex-column p-2' style="width: 600px;">
     <div class= 'd-flex bg-white'>
       <span style="font-size:0.7em">
-        <table class="table">
+        <table class="table table-border border-dark">
           <thead class="thead-dark">
             <tr>
               <th scope="col"><%= sort_link(@q, :dish_name, 'Название') %></th>

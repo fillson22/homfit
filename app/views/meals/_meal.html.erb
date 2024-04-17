@@ -1,8 +1,8 @@
-<div class='d-flex p-2'>
-  <div class='d-flex bg-white'>
+<div class='card d-flex p-2 bg-secondary'>
+  <div class='d-flex'>
     <span style="font-size:0.7em">
       <h5 class='text-center'> <%= status %> </h5>
-      <table class="table">
+      <table class="table text-center align-middle">
         <thead>
           <tr class="table-dark">
             <th scope="col">Название</th>
@@ -23,7 +23,7 @@
               <% meal.pfcc_meal(meal).each do |pfcc| %>
                 <td> <%= pfcc %> </td>
               <% end %>
-              <td> <%= link_to '', edit_meal_path(meal), class: 'bi-pencil-square', method: :get %> </td>
+              <td> <%= link_to '', edit_meal_path(meal), class: 'btn btn-link btn-sm bi-pencil-square', method: :get %> </td>
               <td> <%= button_to '', meal_path(meal), class: 'btn btn-link btn-sm bi-trash', method: :delete %> </td>
             </tr>
           <% end %>
@@ -35,6 +35,7 @@
               <% current_user.meals.pfcc_meal_total(status: status, created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).each do |pfcc| %>
                 <th> <%= pfcc %> </th>
               <% end %>
+              <th></th><th></th><th></th>
             </tr>
         </tbody>
       </table>

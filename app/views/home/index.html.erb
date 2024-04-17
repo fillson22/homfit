@@ -11,8 +11,9 @@
         <div class='p-2'> <%= link_to 'История', report_meals_path, class: "btn btn-primary btn-circle btn-xl"%> </div>
       </div>    
     <% else %>
-      <div class='d-flex justify-content-center align-items-center'>
-        <%= link_to 'Войти', new_user_session_path, class: "btn btn-primary rounded-square p-5"%>
+      <div class='d-flex-column text-center'>
+        <div> <%= link_to 'Войти', new_user_session_path, class: "btn btn-primary rounded-square p-5" %> </div>
+        <div> <%= link_to "Регистрация", new_user_registration_path %> </div>
       </div>
     <% end %>
   </div>

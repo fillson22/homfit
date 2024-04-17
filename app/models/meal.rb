@@ -31,4 +31,9 @@ include RansackOptions
     rezult == 1 ? (return 'danger') : (return 'success')
   end
 
+  def self.rezult_message(person_characteristic, pfcc_meal_total_day)
+    rezult = person_characteristic <=> pfcc_meal_total_day
+    rezult == 1 ? (return 'недобор') : (return 'достаточно')
+  end
+
 end
