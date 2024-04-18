@@ -5,5 +5,5 @@
     <td> <%= dish.carbohydrates %> </td>
     <td> <%= dish.cal %> </td>
     <td> <%= button_to '', edit_dish_path(dish), class: 'btn btn-link btn-sm bi-pencil-square', method: :get %> </td>
-    <td> <%= button_to '', dish_path(dish), class: 'btn btn-link btn-sm bi-trash', method: :delete %> </td>
+    <td> <%= button_to '', dish_path(dish), class: 'btn btn-link bi-trash', method: :delete %> </td>
   </tr>

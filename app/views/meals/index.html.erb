@@ -1,11 +1,11 @@
 <div class='d-flex flex-row justify-content-evenly'>
-  <div class='d-flex flex-column'>
-    <div class='p-2'> <%= render 'cardharacteristic' %> </div>
-    <div class='p-2'> <%= render 'normday' %> </div>
-  </div>
-  <div class='d-flex flex-column'>
-    <% Meal.statuses.keys.each do |status| %>
-      <div class='p-2'> <%= render 'meal', status: status %> </div>
-    <% end %>
+  <% if current_user.person_characteristics.present? %>
+    <div class='d-flex flex-column'>
+      <div class='p-2'> <%= render 'cardharacteristic' %> </div>
+      <div class='p-2'> <%= render 'normday' %> </div>
+    </div>
+  <% end %>
+  <div class='d-flex'>
+      <div class='p-2'> <%= render 'meal_all' %> </div>
   </div>
 </div>

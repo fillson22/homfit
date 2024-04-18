@@ -5,13 +5,13 @@ include RansackOptions
   belongs_to :dish
   enum status: [ :'Перекус', :'Завтрак', :'Обед', :'Ужин' ]
 
-  validates :dish_weight, presence: true, numericality: true
+  validates :dish_weight, presence: true
 
   def pfcc_meal(meal) # Считает бжу за один приём пищи
     proteins = (meal.dish.proteins/100*meal.dish_weight).round(2)
     fats = (meal.dish.fats/100*meal.dish_weight).round(2)
     carbohydrates = (meal.dish.carbohydrates/100*meal.dish_weight).round(2)
-    cal = (meal.dish.cal/100*meal.dish_weight).round(2)
+    cal = meal.dish.cal/100*meal.dish_weight
     return proteins, fats, carbohydrates, cal
   end
 

@@ -1,0 +1,23 @@
+<% @meals.where(status: status, created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).each do |meal| %>
+  <tr>
+    <td> <%= link_to meal.dish.name, dish_path(meal.dish) %> </td>
+    <td> <%= meal.dish_weight %> </td>
+    <% meal.pfcc_meal(meal).each do |pfcc| %>
+      <td> <%= pfcc %> </td>
+    <% end %>
+    <td> <%= link_to '', edit_meal_path(meal), class: 'bi-pencil-square', method: :get %> </td>
+    <td> <%= button_to '', meal_path(meal), class: 'btn btn-link bi-trash', 
+    style: "--bs-btn-padding-y: 0%; --bs-btn-padding-x: 0%; --bs-btn-font-size: .75rem;", method: :delete %> </td>
+  </tr>
+<% end %>
+  <tr> 
+    <td class='text-center' colspan="8"> <%= link_to '', new_meal_path, class: 'bi-plus-square-fill', title: 'Add meal' %> </td>
+  </tr>
+  <tr> 
+    <th> Итого: </th> 
+    <th></th>
+    <% current_user.meals.pfcc_meal_total(status: status, created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).each do |pfcc| %>
+      <th> <%= pfcc %> </th>
+    <% end %>
+    <th></th><th></th>
+  </tr>

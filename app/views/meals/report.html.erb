@@ -9,7 +9,7 @@
     <% end %>
   </div>
   <div class='card d-flex flex-column p-2' style="width: 600px;">
-    <div class= 'd-flex bg-white'>
+    <div>
       <span style="font-size:0.7em">
         <table class="table table-border border-dark">
           <thead class="thead-dark">
@@ -39,12 +39,14 @@
                 <% @meals_dubl.pfcc_meal_total(created_at: Time.zone.now.beginning_of_year..Time.zone.now.end_of_year).each do |pfcc| %>
                   <th> <%= pfcc %> </th>
                 <% end %>
+                <th></th>
+                <th></th>
               </tr>
           </tbody>
         </table>
       </span>
     </div>
-    <div class= 'd-flex'>
+    <div>
       <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
     </div>
   </div>

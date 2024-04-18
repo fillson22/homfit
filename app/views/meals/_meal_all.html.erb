@@ -1,0 +1,25 @@
+<div class='card d-flex p-2' style='width: 500px;'>
+    <span style="font-size:0.7em">
+      <h5 class='text-center'> Приёмы пищи </h5>
+      <table class="table text-center align-middle">
+        <thead>
+          <tr class="table-dark">
+            <th scope="col">Название</th>
+            <th scope="col">В</th>
+            <th scope="col">Б</th>
+            <th scope="col">Ж</th>
+            <th scope="col">У</th>
+            <th scope="col">К</th>
+            <th scope="col">_</th>
+            <th scope="col">_</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Meal.statuses.keys.each do |status| %>
+            <th class='table-primary' colspan="8"> <%= status %></th>
+            <%= render 'meal_one', status: status %>
+          <% end %>
+        </tbody>
+      </table>
+    </span>
+</div>
