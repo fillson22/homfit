@@ -1,0 +1,45 @@
+<div class='card d-flex' style='width: 300px;'>
+  <table class="table text-center">
+    <thead>
+      <tr class='align-middle'>
+        <td class="table-primary" scope="col">#</td>
+        <td class="table-primary" scope="col">Норма в день</td>
+        <td class="table-<%= Meal.rezult_color(
+          @person_characteristic.norm_pfc, current_user.meals.pfcc_meal_total(
+            created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+            ) if current_user.person_characteristics.present? %>"scope="col">
+            Сегодня   <%= Meal.rezult_message(
+                                  @person_characteristic.norm_pfc, 
+                                  current_user.meals.pfcc_meal_total(
+                                  created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+                                  ) if current_user.person_characteristics.present? %></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row">Белки</td>
+        <td><span class="badge text-bg-primary rounded-pill"><%= @person_characteristic.norm_pfc[0] %></span></td>
+        <td><span class="badge text-bg-primary rounded-pill"><%= current_user.meals.pfcc_meal_total(
+                                      created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)[0] %></td>
+      </tr>
+      <tr>
+        <td scope="row">Жиры</td>
+        <td><span class="badge text-bg-primary rounded-pill"><%= @person_characteristic.norm_pfc[1] %></span></td>
+        <td><span class="badge text-bg-primary rounded-pill"><%= current_user.meals.pfcc_meal_total(
+                                      created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)[1] %></td>
+      </tr>
+      <tr>
+        <td scope="row">Углеводы</td>
+        <td><span class="badge text-bg-primary rounded-pill"><%= @person_characteristic.norm_pfc[2] %></span></td>
+        <td><span class="badge text-bg-primary rounded-pill"><%= current_user.meals.pfcc_meal_total(
+                                      created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)[2] %></td>
+      </tr>
+      <tr>
+        <td scope="row">Каллории</td>
+        <td><span class="badge text-bg-primary rounded-pill"><%= @person_characteristic.norm_pfc[3] %></span></td>
+        <td><span class="badge text-bg-primary rounded-pill"><%= current_user.meals.pfcc_meal_total(
+                                      created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)[3] %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

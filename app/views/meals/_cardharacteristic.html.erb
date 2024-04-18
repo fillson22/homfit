@@ -1,0 +1,30 @@
+<div class='card d-flex' style='width: 300px;'>
+  <table class="table">
+    <thead>
+      <tr class='table-primary align-middle'>
+        <td>Ваши параметры</td>
+        <td class='text-center'> <span class="badge">
+            <%= link_to '', edit_person_characteristic_path(@person_characteristic), class: 'text-dark bi-pencil-square'%>
+          </span> </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row">Возраст</td>
+        <td class='text-center'><span class="badge text-bg-primary rounded-pill"><%= @person_characteristic.age %></span></td>
+      </tr>
+      <tr>
+        <td scope="row">Рост(см)</td>
+        <td class='text-center'><span class="badge text-bg-primary rounded-pill"><%= @person_characteristic.height %></span></td>
+      </tr>
+      <tr>
+        <td scope="row">Вес(кг)</td>
+        <td class='text-center'><span class="badge text-bg-primary rounded-pill"><%= @person_characteristic.weight %></span></td>
+      </tr>
+      <tr>
+        <td scope="row">Коефициент активности</td>
+        <td class='text-center'><span class="badge text-bg-primary rounded-pill"><%= @person_characteristic.kof_activ %></span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

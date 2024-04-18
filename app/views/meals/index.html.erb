@@ -1,55 +1,11 @@
-<div class='d-flex'>
-  <table class="table table-bordered text-center">
-    <thead>
-      <% if current_user.person_characteristics.present? %>
-        <tr class="table-dark"> 
-          <th> Характеристики </th> 
-          <th> Возраст </th>
-          <th> Рост(см) </th>
-          <th> Вес(кг) </th>
-          <th> Коефициент активности </th>
-        </tr>
-        <tr> 
-          <td> <%= link_to 'Изментить', edit_person_characteristic_path(@person_characteristic)%></td>
-          <td> <%= @person_characteristic.age %> </td>
-          <td> <%= @person_characteristic.height %></td>
-          <td> <%= @person_characteristic.weight %></td>
-          <td> <%= @person_characteristic.kof_activ %></td>
-        </tr>
-      <% end %>
-      <tr class="table-dark">
-        <th></th>
-        <th>Белки</th>
-        <th>Жиры</th>
-        <th>Углеводы</th>
-        <th>Каллории</th>
-      </tr>
-    </thead>  
-    <tbody>
-      <% if current_user.person_characteristics.present? %>
-        <tr> 
-          <th> Норма в день </th> 
-            <% @person_characteristic.norm_pfc.each do |pfc| %>
-              <td> <%= pfc %> </td>
-            <% end %>
-        </tr>
-      <% end %>
-      <tr class="table-<%= Meal.rezult_color(@person_characteristic.norm_pfc, current_user.meals.pfcc_meal_total(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)) if current_user.person_characteristics.present? %>"> 
-        <th> Сегодня 
-          <%= Meal.rezult_message(@person_characteristic.norm_pfc, current_user.meals.pfcc_meal_total(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)) if current_user.person_characteristics.present? %>
-        </th> 
-        <% current_user.meals.pfcc_meal_total(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).each do |pfcc| %>
-          <td> <%= pfcc %> </td>
-        <% end %>
-      </tr>
-    </tbody>  
-  </table>
+<div class='d-flex flex-row justify-content-evenly'>
+  <div class='d-flex flex-column'>
+    <div class='p-2'> <%= render 'cardharacteristic' %> </div>
+    <div class='p-2'> <%= render 'normday' %> </div>
+  </div>
+  <div class='d-flex flex-column'>
+    <% Meal.statuses.keys.each do |status| %>
+      <div class='p-2'> <%= render 'meal', status: status %> </div>
+    <% end %>
+  </div>
 </div>
-
-<div class="d-flex flex-wrap justify-content-around">
-  <% Meal.statuses.keys.each do |status| %>
-    <div class='p-2'> <%= render 'meal', status: status %> </div>
-  <% end %>
-</div>
-
-
